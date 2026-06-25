@@ -1,0 +1,28 @@
+---
+description: Critical standards for creating, refactoring, or modifying Python unit tests
+globs: tests/**/*.py, **/test_*.py
+alwaysApply: false
+---
+
+# Python Unit Testing Standards
+
+## 1. Framework & Syntax
+- Exclusively use the `pytest` framework and modern functional testing patterns.
+- Write simple, plain python `assert` statements.
+- Prohibit the import or use of the legacy `unittest` module.
+- Ban the use of object-oriented testing classes subclassing `unittest.TestCase`.
+
+## 2. Test Discovery & Naming
+- Enforce the `test_` prefix for all test files (e.g., `test_auth_service.py`).
+- Enforce the `test_` prefix for all test functions (e.g., `test_login_succeeds_with_valid_credentials`).
+- Reject generic or vague function names like `run_test()`, `check_code()`, or `verify()`.
+
+## 3. Mocking & Isolation
+- Inject the `mocker` fixture directly into test function arguments via `pytest-mock`.
+- Prohibit the use of traditional standard library `@mock.patch` decorators.
+- Arrange code cleanly using the AAA (Arrange, Act, Assert) structure, separating each phase with a single blank line.
+
+## 4. Execution Boundaries
+- Isolate tests entirely from live, external infrastructure.
+- Intercept and mock out all network traffic and outgoing HTTP requests.
+- Prevent tests from making mutations or insertions to live, external production databases.

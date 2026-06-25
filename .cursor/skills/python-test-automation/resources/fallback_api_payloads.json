@@ -1,0 +1,23 @@
+{
+  "auth_login_success": {
+    "status": 200,
+    "data": {
+      "access_token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.mockToken",
+      "token_type": "bearer",
+      "expires_in": 3600,
+      "user": {
+        "id": "usr_99X72",
+        "email": "developer@cursorplaybooks.internal",
+        "is_active": true
+      }
+    }
+  },
+  "generic_api_error": {
+    "status": 400,
+    "data": {
+      "error_code": "VALIDATION_FAILED",
+      "message": "The requested payload parameters do not conform to structural schemas.",
+      "timestamp": "2026-06-25T10:00:00Z"
+    }
+  }
+}
