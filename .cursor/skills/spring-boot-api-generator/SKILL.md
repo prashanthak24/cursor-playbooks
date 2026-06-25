@@ -4,8 +4,8 @@
 Automates the lifecycle of creating a Spring Boot REST API endpoint: provisions immutable Record DTOs, sets up Controller templates, hooks in Service layer dependencies, and compiles locally to ensure zero build breakages.
 
 ## Contextual Assets
-- **Scaffolding Blueprint:** `./templates/spring_controller_template.java.tpl`
-- **Data Error Schema:** `./resources/standard_error_response.json`
+- **Scaffolding Blueprint:** `.assets/templates/spring_controller_template.java.tpl`
+- **Data Error Schema:** `.assets/resources/standard_error_response.json`
 
 ## Execution Protocol
 

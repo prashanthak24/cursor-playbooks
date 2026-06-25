@@ -4,8 +4,8 @@
 Automates the lifecycle of Python testing: safely scaffolds clean test modules using strict company templates, utilizes static schema payloads for mock data, runs the local runner, and repairs code until green.
 
 ## Contextual Assets
-- **Scaffolding Blueprint:** `./templates/pytest_boilerplate.py.tpl`
-- **Data Source of Truth:** `./resources/fallback_api_payloads.json`
+- **Scaffolding Blueprint:** `.assets/templates/pytest_boilerplate.py.tpl`
+- **Data Source of Truth:** `.assets/resources/fallback_api_payloads.json`
 
 ## Execution Protocol
 
