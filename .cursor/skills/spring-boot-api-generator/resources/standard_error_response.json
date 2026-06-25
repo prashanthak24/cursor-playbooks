@@ -1,0 +1,10 @@
+{
+  "timestamp": "2026-06-25T17:00:00Z",
+  "status": 400,
+  "error": "Bad Request",
+  "code": "VALIDATION_FAILED",
+  "message": "Field level verification constraints failed to resolve cleanly.",
+  "details": {
+    "email": "Must be a structurally valid email syntax formatting."
+  }
+}

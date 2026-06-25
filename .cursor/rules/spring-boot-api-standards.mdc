@@ -1,0 +1,27 @@
+---
+description: Structural architectural standards for creating or modifying Spring Boot API Endpoints
+globs: "**/controller/**/*.java, **/dto/**/*.java, **/service/**/*.java, **/exception/**/*.java"
+alwaysApply: false
+---
+
+# Spring Boot API Creation Standards
+
+All new endpoints must align with our enterprise Spring 3.x / Java 21 layers (Controller, Service, DTO). Follow these strict guidelines to maintain thread safety, immutability, and clean separation of concerns.
+
+## 1. Architectural Layers & DI
+- **Exclusively Class-Level REST Controllers:** Annotate API entry points with `@RestController` and `@RequestMapping("/api/v1/resource")`. Do not use legacy `@Controller`.
+- **Constructor Injection Only:** Enforce constructor-based dependency injection for Services and Repositories. **BANNED:** Never use field injection via `@Autowired`. Mark injected dependencies as `private final`.
+- **Immutability via Records:** All request and response Data Transfer Objects (DTOs) must be written as native Java `record` types. Do not use classes with getters/setters or Lombok `@Data` for DTOs.
+
+## 2. Validation & REST Conventions
+- **Naming Conventions:** Use lower-case, hyphenated or plural nouns for URL paths (e.g., `/api/v1/user-profiles`). Avoid verbs inside paths.
+- **Payload Validation:** Enforce input verification at the controller layer by wrapping request payloads in `@Valid`. Use `jakarta.validation.constraints` annotations (`@NotNull`, `@NotBlank`, `@Size`) directly within DTO records.
+- **HTTP Methods & Return Types:** Wrap all controller responses inside a typed `ResponseEntity<T>`. Match methods to standard CRUD verbs:
+  - `POST`: Annotate with `@PostMapping` (Returns `HttpStatus.CREATED`)
+  - `GET`: Annotate with `@GetMapping` (Returns `HttpStatus.OK`)
+  - `PUT`: Annotate with `@PutMapping` (Returns `HttpStatus.OK`)
+  - `DELETE`: Annotate with `@DeleteMapping` (Returns `HttpStatus.NO_CONTENT`)
+
+## 3. Global Exception Handling
+- **No Try-Catch Blocks in Controllers:** Keep controller methods completely lean. Delegate error parsing to a central `@RestControllerAdvice` class using `@ExceptionHandler`.
+- **Sanitized Failures:** Never leak lower-level internal database traces, Hibernate logs, or full stack traces into API payloads. Map errors cleanly to standard error structures.
