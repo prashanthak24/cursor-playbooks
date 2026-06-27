@@ -1,0 +1,15 @@
+{
+  "allowed_types": {
+    "feat": "A new feature or API endpoint implementation",
+    "fix": "A bug fix or patch inside application logic",
+    "test": "Adding missing tests, refactoring existing test cases, or correcting test suites",
+    "refactor": "A code change that neither fixes a bug nor adds a feature",
+    "docs": "Documentation modifications only (Markdown files, docstrings)",
+    "chore": "Updating build tasks, package manager dependencies, or infrastructure configurations"
+  },
+  "constraints": {
+    "max_subject_length": 50,
+    "max_body_line_length": 72,
+    "case_style": "lower_case"
+  }
+}
